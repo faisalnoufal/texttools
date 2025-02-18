@@ -16,136 +16,6 @@
     <link rel="canonical" href="https://underscore.webadder.com" />
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="style.css" />
-    <style>
-      /* General Styles */
-      :root {
-        --primary-color: #007bff;
-        --background-color: #f7e7c2;
-        --text-color: #333;
-        --border-color: #ccc;
-        --hover-color: #0056b3;
-      }
-
-      body.dark-mode {
-        --background-color: #333;
-        --text-color: #fff;
-        --border-color: #666;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        margin: 0;
-        padding: 20px;
-        transition: background-color 0.3s, color 0.3s;
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: var(--background-color);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      h1 {
-        text-align: center;
-        color: var(--primary-color);
-        margin-bottom: 20px;
-      }
-
-      /* Input and Textarea Styles */
-      #input {
-        width: 100%;
-        height: 100px;
-        padding: 10px;
-        border: 3px solid var(--border-color);
-        border-radius: 5px;
-        font-size: 16px;
-        resize: none;
-        margin: 10px auto;
-        background-color: var(--background-color);
-        color: var(--text-color);
-      }
-
-      #delimiter {
-        width: 50px;
-        padding: 5px;
-        border: 2px solid var(--border-color);
-        border-radius: 5px;
-        font-size: 16px;
-        text-align: center;
-        margin: 10px 0;
-      }
-
-      /* Output Styles */
-      #output {
-        color: var(--text-color);
-        width: 100%;
-        padding: 10px;
-        border: 1px solid var(--border-color);
-        border-radius: 5px;
-        background-color: var(--background-color);
-        word-wrap: break-word;
-        margin: 10px auto;
-      }
-
-      /* Button Styles */
-      button {
-        padding: 10px 20px;
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        margin: 5px;
-        transition: background-color 0.3s;
-      }
-
-      button:hover {
-        background-color: var(--hover-color);
-      }
-
-      /* Character Count Styles */
-      .count {
-        font-size: 14px;
-        color: #666;
-        margin: 10px 0;
-      }
-
-      /* Dark Mode Toggle */
-      .dark-mode-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 10px;
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .dark-mode-toggle:hover {
-        background-color: var(--hover-color);
-      }
-
-      /* Responsive Design */
-      @media (max-width: 600px) {
-        h1 {
-          font-size: 20px;
-        }
-
-        #input,
-        #output {
-          width: 100%;
-        }
-      }
-    </style>
   </head>
   <body>
     <div class="container">
@@ -171,14 +41,33 @@
       <button id="undoButton">Undo</button>
       <button id="redoButton">Redo</button>
 
+      <div class="flex-center">
+        <button id="uppercaseButton">UPPERCASE</button>
+        <button id="lowercaseButton">lowercase</button>
+        <button id="titlecaseButton">Title Case</button>
+        <button id="sentencecaseButton">Sentence case</button>
+        <button id="togglecaseButton">tOGGLE cASE</button>
+      </div>
+
       <p class="count">Input Characters: <span id="inputCount">0</span></p>
       <p class="count">Output Characters: <span id="outputCount">0</span></p>
 
       <p id="output"></p>
     </div>
 
-    <button class="dark-mode-toggle" id="toggleDarkMode">🌙</button>
+    <!-- <button class="dark-mode-toggle" id="toggleDarkMode">🌙</button> -->
+
+    <!-- Dark Mode Toggle Switch -->
+    <div class="toggle-container">
+      <input type="checkbox" class="checkbox" id="checkbox" />
+      <label for="checkbox" class="checkbox-label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <span class="ball"></span>
+      </label>
+    </div>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/faisalnoufal/webadder@master/webadder1.1.min.js"></script>
   </body>
 </html>

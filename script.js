@@ -14,6 +14,12 @@ const outputCount = document.getElementById("outputCount");
 function autoConvert() {
   let text = textarea.value;
   const delimiter = delimiterInput.value || "_";
+
+  if (delimiter === "*") {
+    alert("The '*' delimiter is not supported!");
+    return;
+  }
+
   if (convertToUnderscore) {
     output.textContent = text.replace(/ /g, delimiter);
   } else {
@@ -86,10 +92,6 @@ document.getElementById("redoButton").addEventListener("click", () => {
   }
 });
 
-document.getElementById("toggleDarkMode").addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
-
 // Function to update history
 function updateHistory() {
   const text = textarea.value;
@@ -97,3 +99,70 @@ function updateHistory() {
   history.push(text);
   historyIndex++;
 }
+
+// 🆕 Case Conversion Functions
+function toUpperCase() {
+  output.textContent = output.textContent.toUpperCase();
+}
+
+function toLowerCase() {
+  output.textContent = output.textContent.toLowerCase();
+}
+
+function toTitleCase() {
+  output.textContent = output.textContent
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function toSentenceCase() {
+  output.textContent = output.textContent
+    .toLowerCase()
+    .replace(/(^\s*\w|[.!?]\s*\w)/g, (char) => char.toUpperCase());
+}
+
+function toToggleCase() {
+  output.textContent = output.textContent
+    .split("")
+    .map((char) =>
+      char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()
+    )
+    .join("");
+}
+
+// 🎛️ Add event listeners to case change buttons
+document
+  .getElementById("uppercaseButton")
+  .addEventListener("click", toUpperCase);
+document
+  .getElementById("lowercaseButton")
+  .addEventListener("click", toLowerCase);
+document
+  .getElementById("titlecaseButton")
+  .addEventListener("click", toTitleCase);
+document
+  .getElementById("sentencecaseButton")
+  .addEventListener("click", toSentenceCase);
+document
+  .getElementById("togglecaseButton")
+  .addEventListener("click", toToggleCase);
+
+// 🌙 Toggle Dark Mode
+const checkbox = document.getElementById("checkbox");
+
+// Load dark mode state from local storage
+if (localStorage.getItem("dark-mode") === "enabled") {
+  document.body.classList.add("dark-mode");
+  checkbox.checked = true;
+}
+
+// Toggle dark mode
+checkbox.addEventListener("change", () => {
+  if (checkbox.checked) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("dark-mode", "enabled"); // Save preference
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("dark-mode", "disabled");
+  }
+});
