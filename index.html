@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Underscore_ Converter - Convert Spaces to Underscores</title>
+    <meta
+      name="description"
+      content="Easily convert spaces into underscores or custom delimiters with Underscore_ Converter. A simple, user-friendly tool for text formatting."
+    />
+    <meta
+      name="keywords"
+      content="underscore converter, space to underscore, text formatting, custom delimiter, SEO-friendly tool"
+    />
+    <meta name="author" content="WebAdder" />
+    <link rel="canonical" href="https://underscore.webadder.com" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* General Styles */
+      :root {
+        --primary-color: #007bff;
+        --background-color: #f7e7c2;
+        --text-color: #333;
+        --border-color: #ccc;
+        --hover-color: #0056b3;
+      }
+
+      body.dark-mode {
+        --background-color: #333;
+        --text-color: #fff;
+        --border-color: #666;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--background-color);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      /* Input and Textarea Styles */
+      #input {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        border: 3px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 16px;
+        resize: none;
+        margin: 10px auto;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      #delimiter {
+        width: 50px;
+        padding: 5px;
+        border: 2px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 16px;
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      /* Output Styles */
+      #output {
+        color: var(--text-color);
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        background-color: var(--background-color);
+        word-wrap: break-word;
+        margin: 10px auto;
+      }
+
+      /* Button Styles */
+      button {
+        padding: 10px 20px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 5px;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: var(--hover-color);
+      }
+
+      /* Character Count Styles */
+      .count {
+        font-size: 14px;
+        color: #666;
+        margin: 10px 0;
+      }
+
+      /* Dark Mode Toggle */
+      .dark-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .dark-mode-toggle:hover {
+        background-color: var(--hover-color);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 20px;
+        }
+
+        #input,
+        #output {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Underscore_ Converter</h1>
+      <p>Easily convert spaces into underscores or custom delimiters.</p>
+
+      <textarea id="input" placeholder="Enter text here!" autofocus></textarea>
+
+      <input
+        type="text"
+        id="delimiter"
+        placeholder="_"
+        maxlength="1"
+        title="Custom Delimiter"
+      />
+
+      <button id="toggleMode">Toggle Mode</button>
+      <button id="copyButton">Copy to Clipboard</button>
+      <button id="downloadButton">Download as Text File</button>
+      <button id="clearButton">Clear</button>
+      <button id="undoButton">Undo</button>
+      <button id="redoButton">Redo</button>
+
+      <p class="count">Input Characters: <span id="inputCount">0</span></p>
+      <p class="count">Output Characters: <span id="outputCount">0</span></p>
+
+      <p id="output"></p>
+    </div>
+
+    <button class="dark-mode-toggle" id="toggleDarkMode">🌙</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
